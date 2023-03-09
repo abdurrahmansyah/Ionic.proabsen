@@ -1,0 +1,106 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+
+          <div>
+            <div class="likeCard" style="background-image: url(../../assets/images/img-1.png); background-size: 100%;">
+              <div style="padding-left: 30px; padding-top: 35px;">
+                <ion-text style="color: white; font-size: 9vw; font-weight: 700;">Pro Absen</ion-text> <br>
+                <!-- <ion-text style="color: white; font-size: 5vw; font-weight: 300;">Uangku</ion-text> -->
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/Home" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Attendance</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/Leaderboard" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="ribbon"></ion-icon>
+              <ion-label>Leaderboard</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/History" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="receipt"></ion-icon>
+              <ion-label>History</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Menu Profile</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/Profile" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <hr style="height: 1px; background-color: #d7d8da; margin: 0px;">
+          <hr style="height: 20px; margin: 0px;">
+
+          <ion-list-header>Lainnya</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/Tentang" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="help-circle"></ion-icon>
+              <ion-label>Tentang</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item lines="none" detail="false" button (click)="logout()">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>Logout</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <!-- <ion-list id="labels-list">
+          <ion-list-header>Labels</ion-list-header>
+
+          <ion-item *ngFor="let label of labels" lines="none">
+            <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+            <ion-label>{{ label }}</ion-label>
+          </ion-item>
+        </ion-list> -->
+      </ion-content>
+      <ion-footer *ngIf="isAdmin">
+        <ion-toolbar lines="none">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item routerDirection="root" routerLink="/home/Administrator" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon slot="start" name="pulse"></ion-icon>
+              <ion-label>Administrator</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <!-- <ion-button color="rid-goodgreen-four" mode="ios">
+            <ion-icon slot="icon-only" name="finger-print"></ion-icon>
+          </ion-button> -->
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

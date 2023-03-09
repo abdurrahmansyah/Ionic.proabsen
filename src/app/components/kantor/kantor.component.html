@@ -1,0 +1,87 @@
+<div>
+  <br>
+  <ion-item lines="none" button (click)="CloseTambahEdit()">
+    <ion-icon color="rid-goodgreen-two" name="close"></ion-icon>
+  </ion-item>
+
+  <ion-text *ngIf="isAddNew" style="font-size: 20px; font-weight: 700; color: var(--ion-color-rid-goodgreen-two)"
+    class="ion-padding">Tambah
+    Kantor</ion-text>
+  <ion-text *ngIf="!isAddNew" style="font-size: 20px; font-weight: 700; color: var(--ion-color-rid-goodgreen-two)"
+    class="ion-padding">Edit
+    Kantor</ion-text>
+  <br>
+
+  <div class="ion-padding">
+    <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodgreen-two); line-height: 25px;">Nama
+      Kantor</ion-text>
+    <br>
+    <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="text" placeholder="Nama Kantor..."
+      [(ngModel)]="kantor" class="ion-no-padding"></ion-input>
+
+    <hr style="height: 10px; margin: 0px;">
+    <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+    <hr style="height: 10px; margin: 0px;">
+
+    <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodgreen-two); line-height: 25px;">Alamat</ion-text>
+    <br>
+    <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="text" placeholder="Alamat Kantor..."
+      [(ngModel)]="alamat" class="ion-no-padding"></ion-input>
+
+    <hr style="height: 10px; margin: 0px;">
+    <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+    <hr style="height: 10px; margin: 0px;">
+
+    <ion-row style="padding: 0px;">
+      <ion-col size="6" style="padding: 0px;">
+        <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodgreen-two); line-height: 25px;">Longitude</ion-text>
+        <br>
+        <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="number" placeholder="Longitude..."
+          [(ngModel)]="longitude" class="ion-no-padding"></ion-input>
+        <!-- <br> -->
+
+        <hr style="height: 10px; margin: 0px;">
+        <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+        <hr style="height: 10px; margin: 0px;">
+      </ion-col>
+
+      <ion-col size="6" style="padding: 0px;">
+        <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodgreen-two); line-height: 25px;">Latitude</ion-text>
+        <br>
+        <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="number" placeholder="Latitude..."
+          [(ngModel)]="latitude" class="ion-no-padding"></ion-input>
+        <!-- <br> -->
+
+        <hr style="height: 10px; margin: 0px;">
+        <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+        <hr style="height: 10px; margin: 0px;">
+      </ion-col>
+    </ion-row>
+
+    <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodgreen-two); line-height: 25px;">Radius (m)</ion-text>
+    <br>
+    <ion-input style="font-size: 16px; font-weight: 700; color: #2c365a" type="number" placeholder="Radius..."
+      [(ngModel)]="radius" class="ion-no-padding"></ion-input>
+
+    <!-- <hr style="height: 10px; margin: 0px;">
+    <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+    <hr style="height: 10px; margin: 0px;"> -->
+
+    <br>
+    <br>
+
+    <ion-row *ngIf="isAddNew" class="status" style="background-color: var(--ion-color-rid-goodgreen-two);" button
+      (click)="AddNewData()">
+      <ion-col style="padding: 0px;" class="ion-align-self-center">
+        <ion-text>Tambah Kantor</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!isAddNew" class="status" style="background-color: var(--ion-color-rid-goodgreen-two);" button
+      (click)="EditData()">
+      <ion-col style="padding: 0px;" class="ion-align-self-center">
+        <ion-text>Edit Kantor</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

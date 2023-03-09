@@ -1,0 +1,30 @@
+.status {
+    color: white;
+    // background-color: var(--ion-color-hk-ppid-three);
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.btnLampiran {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    background-color: var(--ion-color-rid-goodgreen-two);
+    border-radius: 10px;
+    // padding: 10px;
+}
+
+.txtLabel {
+    font-size: 12px;
+    color: var(--ion-color-rid-goodgreen-two);
+    line-height: 25px;
+}
+
+.txtIsian {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c365a;
+}

@@ -1,0 +1,57 @@
+<div>
+  <br>
+  <ion-item lines="none" button (click)="CloseTambahEdit()">
+    <ion-icon color="rid-goodgreen-two" name="close"></ion-icon>
+  </ion-item>
+
+  <ion-text *ngIf="isAddNew" style="font-size: 20px; font-weight: 700; color: var(--ion-color-rid-goodgreen-two)"
+    class="ion-padding">Form Pengajuan Izin</ion-text>
+  <br>
+
+  <div class="ion-padding">
+    <ion-row class="ion-no-padding ion-no-margin">
+      <ion-col size="9.5" class="ion-no-padding ion-no-margin">
+        <ion-text class="txtLabel">Keterangan</ion-text>
+        <br>
+        <ion-select interface="action-sheet" placeholder="Keterangan..." mode="ios" [(ngModel)]="kehadiran"
+          class="ion-no-padding txtIsian">
+          <ion-select-option value="Ijin">Ijin</ion-select-option>
+          <ion-select-option value="Sakit">Sakit</ion-select-option>
+          <ion-select-option value="Dinas Dalam Kota">Dinas Dalam Kota</ion-select-option>
+          <ion-select-option value="Dinas Luar Kota">Dinas Luar Kota</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col size="2.5" class="ion-no-padding ion-no-margin">
+        <div class="btnLampiran ion-activatable" button (click)="TakeAPhoto()">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div style="padding: 10px;">
+            <ion-icon style="font-size: 30px;" name="attach"></ion-icon>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <hr style="height: 10px; margin: 0px;">
+    <hr style="height: 0.5px; background-color: #e6e6e6; margin: 0px;">
+    <hr style="height: 10px; margin: 0px;">
+
+    <ion-text class="txtLabel">Rincian</ion-text>
+    <br>
+    <ion-textarea type="text" placeholder="Rincian..." autocapitalize="sentences" [(ngModel)]="keterangan"
+      class="ion-no-padding txtIsian"></ion-textarea>
+
+    <div *ngIf="photo" class="ion-padding-vertical ion-text-center">
+      <img style="max-height: 50vh;" src="{{ photo }}" />
+    </div>
+
+    <br>
+    <br>
+
+    <ion-row *ngIf="isAddNew" class="status" style="background-color: var(--ion-color-rid-goodgreen-two);" button
+      (click)="AddNewData()">
+      <ion-col style="padding: 0px;" class="ion-align-self-center">
+        <ion-text>Ajukan Izin</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

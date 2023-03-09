@@ -1,0 +1,480 @@
+// FOR ALL PAGE
+
+ion-content {
+  --ion-background-color: var(--ion-color-rid-goodgreen-four);
+}
+
+ion-menu-button {
+  color: var(--ion-color-rid-goodgreen-four);
+  background-color: var(--ion-color-rid-goodgreen-two);
+  border-radius: 10px;
+}
+
+ion-button {
+  text-transform: none;
+}
+
+ion-item-option {
+  text-transform: none;
+}
+
+// START PAGE HOME //
+
+.pageHome {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  ion-content {
+    --background: #fff url("../../assets/images/img-5.png") no-repeat top center / cover;
+  }
+
+  .likeCard {
+    width: 100%;
+    height: 35vw;
+    border-radius: 20px;
+  }
+
+  .limitInformation {
+    background-color: #6952ed;
+    height: fit-content;
+    border-radius: 20px;
+
+    padding-left: 30px;
+    padding-top: 24px;
+    padding-right: 30px;
+    padding-bottom: 24px;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .flexContainer {
+    flex-grow: 1 !important;
+    // background-color: #ffffff;
+    // background-color: #6952ED;
+    border-radius: 30px 30px 0px 0px;
+    background-image: url(../../assets/images/img-4.png);
+    background-size: 100%;
+
+    display: flex;
+    flex-flow: column;
+    height: 1%;
+
+    .scrollYnew {
+      // height: 250px;
+      overflow: auto;
+      flex-grow: 1 !important;
+      background-color: #ffffff;
+    }
+  }
+}
+
+ion-card {
+  --background: #ffffff;
+  box-shadow: none;
+}
+
+.analytics {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll {
+    // overflow: auto;
+
+    .container2 {
+      display: inline-flex;
+      width: 100%;
+      height: fit-content;
+      border-radius: 8px;
+      top: 0;
+
+      .invisible-card {
+        background: transparent;
+        box-shadow: none;
+
+        .statusB {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: center !important;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.IconRemove {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 10px;
+  font-size: x-large;
+  background-color: #cc0814;
+  height: 50px;
+  width: 50px;
+}
+
+.IconAdd {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 10px;
+  font-size: x-large;
+  background-color: #28c965;
+  height: 50px;
+  width: 50px;
+}
+
+// END PAGE HOME //
+
+// START PAGE LEADERBOARD
+
+.pageLeaderboard {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 82px);
+  // height: 100%;
+
+  ion-content {
+    --background: #fff url("../../assets/images/img-8.png") no-repeat top center / cover;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollYnew {
+    overflow: auto;
+    flex-grow: 1 !important;
+  }
+
+  // .testFlexToBottom {
+  //   background-color: chocolate;
+  //   flex-grow: 1 !important;
+
+  //   .dalamFlex {
+  //     background-color: #28c965;
+  //     // flex-grow: 1 !important;
+  //   }
+  // }
+
+  .footerKategori {
+    height: 82px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: var(--ion-color-rid-goodgreen-four);
+  }
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.btnTambah {
+  // width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.btnTambah2 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px;
+}
+
+.btnTambah3 {
+  // display: ruby !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px;
+}
+
+// END PAGE LEADERBOARD
+
+// START PAGE HISTORY
+
+.pageHistory {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 82px);
+  // height: 100%;
+
+  ion-content {
+    --background: #fff url("../../assets/images/img-8.png") no-repeat top center / cover;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollYnew {
+    overflow: auto;
+    flex-grow: 1 !important;
+  }
+
+  // .testFlexToBottom {
+  //   background-color: chocolate;
+  //   flex-grow: 1 !important;
+
+  //   .dalamFlex {
+  //     background-color: #28c965;
+  //     // flex-grow: 1 !important;
+  //   }
+  // }
+
+  .footerKategori {
+    height: 82px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: var(--ion-color-rid-goodgreen-four);
+  }
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
+
+.btnTambah {
+  // width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.btnTambah2 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px;
+}
+
+.btnTambah3 {
+  // display: ruby !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 5px;
+}
+
+// END PAGE HISTORY
+
+// START PAGE PROFILE
+
+.pageProfile {
+  display: flex;
+  flex-flow: column;
+  height: calc(100vh - 82px);
+  // height: 100%;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .border {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 2px solid var(--ion-color-rid-goodgreen-two) !important;
+
+    ion-text {
+      color: var(--ion-color-rid-goodgreen-two);
+    }
+  }
+
+  .footerProfile {
+    height: 82px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: var(--ion-color-rid-goodgreen-four);
+  }
+}
+
+// END PAGE PROFILE
+
+// START PAGE TENTANG
+
+.pageTentang {
+  // display: flex;
+  // flex-flow: column;
+  height: 100%;
+
+  .likeCard {
+    width: 75%;
+    height: 87vw;
+    border-radius: 0px 20px 20px 0px;
+  }
+}
+
+.border {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+}
+
+.borderSolid {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--ion-color-rid-goodblue-one) !important;
+  background-color: var(--ion-color-rid-goodblue-one);
+  height: 100%;
+}
+
+// END PAGE TENTANG
+
+// START PAGE ADMINISTRATOR
+
+.pageAdministrator {
+  display: flex;
+  flex-flow: column;
+  // height: calc(100vh - 82px);
+  height: 100%;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .border {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 2px solid var(--ion-color-rid-goodgreen-two) !important;
+
+    ion-text {
+      color: var(--ion-color-rid-goodgreen-two);
+    }
+  }
+
+  .flexContainer {
+    flex-grow: 1 !important;
+
+    display: flex;
+    flex-flow: column;
+    height: 1%;
+
+    .scrollYnew {
+      overflow: auto;
+      flex-grow: 1 !important;
+      // height: 100px;
+      // background-color: #ffffff;
+
+      .dash1 {
+        padding: 24px;
+        background-color: var(--ion-color-rid-goodgreen-one);
+        color: var(--ion-color-rid-goodgreen-five);
+        border-radius: 10px;
+
+        .profilImageKaryawan {
+          // display: flex !important;
+          // justify-content: center !important;
+          // align-items: center !important;
+          // border-radius: 20px;
+          // height: 40px;
+          // width: 40px;
+          // position: relative;
+
+          .one {
+            border-radius: 20px;
+            height: 40px;
+            width: 40px;
+          }
+          .two {
+            position: absolute;
+            left: 30px;
+            border-radius: 20px;
+            height: 40px;
+            width: 40px;
+          }
+          .three {
+            position: absolute;
+            left: 61px;
+            border-radius: 20px;
+            height: 40px;
+            width: 40px;
+          }
+          .icon {
+            position: absolute;
+            right: -10px;
+          }
+        }
+
+        .persenKaryawanTotal {
+          background-color: var(--ion-color-rid-goodgreen-three);
+          height: 12px;
+          border-radius: 5px;
+          width: 100%;
+          position: absolute;
+          top: 5px;
+          left: 0px;
+        }
+
+        .persenKaryawanExisting {
+          background-color: var(--ion-color-rid-goodgreen-five);
+          height: 12px;
+          border-radius: 5px;
+          position: absolute;
+          top: 5px;
+          left: 0px;
+        }
+      }
+    }
+  }
+
+  .IconAdd {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 10px;
+    background-color: var(--ion-color-rid-goodgreen-one);
+  }
+
+  .footerProfile {
+    height: 82px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 999;
+    background-color: var(--ion-color-rid-goodgreen-four);
+  }
+
+  ion-segment-button {
+    text-transform: none;
+
+    --color: grey;
+    --color-checked: var(--ion-color-rid-goodgreen-two);
+    --indicator-color: var(--ion-color-rid-goodgreen-two);
+    --indicator-height: 3px;
+    --border-width: 30px;
+    min-width: 29vw;
+  }
+
+  ion-searchbar.ios {
+    --cancel-button-color: var(--ion-color-rid-goodgreen-two);
+  }
+}
+
+// END PAGE ADMINISTRATOR

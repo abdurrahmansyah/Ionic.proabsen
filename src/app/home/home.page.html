@@ -1,0 +1,1118 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="auth.user | async as user">
+      Hi, {{user.displayName}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<div *ngIf="isPageHome" class="pageHome">
+  <ion-content [fullscreen]="true">
+    <!-- scrollY="false" -->
+    <div *ngIf="isPageHome" class="pageHome">
+      <br>
+      <br>
+
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="2">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="7" class="ion-align-self-center">
+          <!-- <ion-text style="font-size: 20px; font-weight: 500;" color="rid-goodgreen-two">{{txtDayNow}}</ion-text> -->
+        </ion-col>
+        <!-- <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">Home</ion-text>
+        </ion-col> -->
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <div style="height: 16vh;">
+
+      </div>
+
+      <div class="ion-padding">
+        <ion-text style="font-size: 20px; font-weight: 500; margin-left: 5px;" color="rid-goodgreen-two"
+          *ngIf="idKaryawan; else otherHi">Hi, {{namaKaryawan}}</ion-text>
+        <ng-template #otherHi><ion-text style="font-size: 20px; font-weight: 500; margin-left: 5px;"
+            color="rid-goodgreen-two" *ngIf="auth.user | async as user">Hi,
+            {{user.displayName}}</ion-text></ng-template>
+        <br>
+        <hr style="height: 10px; margin: 0px;">
+
+        <div>
+          <div class="likeCard" style="background-image: url(../../assets/images/img-1.png); background-size: 100%;">
+            <ion-row>
+              <ion-col *ngIf="idKaryawan" size="7" class="ion-no-padding">
+                <div class="ion-padding" style="padding-right: 0px; padding-top: 24px;">
+                  <ion-row>
+                    <ion-col size="10" class="ion-no-padding" style="overflow: auto">
+                      <ion-text style="color: var(--ion-color-rid-goodgreen-five); font-size: 3.5vw; font-weight: 700;"
+                        class="ion-text-nowrap">This month performance
+                      </ion-text>
+                    </ion-col>
+                    <ion-col size="2" class="ion-no-padding ion-align-self-center ion-text-end">
+                      <ion-icon style="color: var(--ion-color-rid-goodgreen-five); font-size: 5vw;"
+                        name="analytics"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="8.75" class="ion-no-padding" style="position: relative;">
+                      <div
+                        style="background-color: var(--ion-color-rid-goodgreen-three); height: 12px; border-radius: 5px; width: 100%; position: absolute; top: 5px; left: 0px;">
+                      </div>
+                      <div
+                        style="background-color: var(--ion-color-rid-goodgreen-five); height: 12px; border-radius: 5px;  position: absolute; top: 5px; left: 0px;"
+                        [style.width]="performancePersen">
+                      </div>
+                    </ion-col>
+                    <ion-col size="0.75"></ion-col>
+                    <ion-col size="2.5" class="ion-no-padding ion-no-margin ion-text-end">
+                      <ion-text class="ion-text-nowrap"
+                        style="color: var(--ion-color-rid-goodgreen-five); font-size: 4.5vw; ">{{performancePersen}}</ion-text>
+                    </ion-col>
+                  </ion-row>
+                </div>
+
+                <div style="padding-left: 16px; position: absolute; bottom: 24px;">
+                  <ion-text style="color: white; font-size: 3.5vw; font-weight: 300;">Datang: {{datang}}</ion-text> <br>
+                  <ion-text style="color: white; font-size: 3.5vw; font-weight: 300;">Pulang: {{pulang}}</ion-text>
+                </div>
+              </ion-col>
+              <ion-col *ngIf="!idKaryawan" class="ion-padding" style="padding-right: 0px; padding-top: 24px;">
+                <ion-skeleton-text [animated]="true"
+                  style="width: 40%; height: 16px; border-radius: 5px;"></ion-skeleton-text>
+                <ion-skeleton-text [animated]="true"
+                  style="width: 100%; height: 20px; border-radius: 5px;"></ion-skeleton-text>
+                <hr style="height: 3px;">
+                <ion-skeleton-text [animated]="true"
+                  style="width: 70%; height: 16px; border-radius: 5px;"></ion-skeleton-text>
+                <ion-skeleton-text [animated]="true"
+                  style="width: 50%; height: 16px; border-radius: 5px;"></ion-skeleton-text>
+              </ion-col>
+              <ion-col size="5" class="ion-padding ion-text-center ion-align-self-center" style="height: 35vw;">
+                <div
+                  style="background-color: var(--ion-color-rid-goodgreen-five); border-radius: 10px; width: 100%; height: 100%;"
+                  class="ion-activatable btnTambah2" button (click)="Absen()">
+                  <ion-ripple-effect style="border-radius: 10px; margin: 16px;"></ion-ripple-effect>
+                  <ion-text style="color: #99D5BF;">Absen</ion-text>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="ion-padding" style="padding-top: 0px;">
+        <ion-row>
+          <ion-col size="6" class="ion-no-padding ion-text-center ion-align-self-center">
+            <div style="background-color: #F2E8E9; border-radius: 10px; margin-right: 8px; padding: 16px 0px;"
+              class="ion-activatable" button>
+              <ion-ripple-effect style="border-radius: 10px; margin-right: 8px; padding: 16px 0px;"></ion-ripple-effect>
+              <ion-text style="color: #B87781;">Absen Datang</ion-text>
+            </div>
+          </ion-col>
+          <ion-col size="6" class="ion-no-padding ion-text-center ion-align-self-center">
+            <div style="background-color: #F2E8E9; border-radius: 10px; margin-left: 8px; padding: 16px 0px;"
+              class="ion-activatable" button>
+              <ion-ripple-effect style="border-radius: 10px; margin-left: 8px; padding: 16px 0px;"></ion-ripple-effect>
+              <ion-text style="color: #B87781;">Absen Pulang</ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div> -->
+
+      <div class="flexContainer">
+        <ion-row style="padding: 24px;">
+          <ion-col size="4" style="height: 25vw;" class="ion-no-padding ion-align-self-center">
+            <div style="background-color: #F5B293; border-radius: 10px; margin-right: 12px; height: 100%;"
+              class="ion-text-center ion-activatable" button (click)="ToIzin()">
+              <ion-ripple-effect style="border-radius: 10px; margin-right: 12px; height: 100%;"></ion-ripple-effect>
+              <ion-row class="ion-no-padding" style="height: 100%;">
+                <ion-col size="12" class="ion-no-padding ion-align-self-center ion-text-center">
+                  <ion-icon name="chatbox-ellipses-outline" style="color: white; font-size: 32px;"></ion-icon> <br>
+                  <ion-text style="color:white;">Izin</ion-text>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+          <ion-col size="4" style="height: 25vw;" class="ion-no-padding ion-align-self-center">
+            <div
+              style="background-color: #F5B293; border-radius: 10px; margin-left: 6px; margin-right: 6px; height: 100%;"
+              class="ion-text-center ion-activatable" button (click)="ToHistory()">
+              <ion-ripple-effect
+                style="border-radius: 10px; margin-left: 6px; margin-right: 6px; height: 100%;"></ion-ripple-effect>
+              <ion-row class="ion-no-padding" style="height: 100%;">
+                <ion-col size="12" class="ion-no-padding ion-align-self-center ion-text-center">
+                  <ion-icon name="receipt-outline" style="color: white; font-size: 32px;"></ion-icon> <br>
+                  <ion-text style="color:white;">History</ion-text>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+          <ion-col size="4" style="height: 25vw;" class="ion-no-padding ion-align-self-center">
+            <div style="background-color: #F5B293; border-radius: 10px; margin-left: 12px; height: 100%;"
+              class="ion-text-center ion-activatable" button (click)="ToProfile()">
+              <ion-ripple-effect style="border-radius: 10px; margin-left: 12px; height: 100%;"></ion-ripple-effect>
+              <ion-row class="ion-no-padding" style="height: 100%;">
+                <ion-col size="12" class="ion-no-padding ion-align-self-center ion-text-center">
+                  <ion-icon name="person-outline" style="color: white; font-size: 32px;"></ion-icon> <br>
+                  <ion-text style="color:white;">Profile</ion-text>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <div style="background-color: #ffffff; border-radius: 30px 30px 0px 0px;">
+          <hr style="height: 25px; margin: 0px;">
+          <ion-row style="padding-right: 16px;">
+            <ion-col size="8" style="padding-left: 0px;">
+              <ion-text style="font-size: 20px; font-weight: 700; color: #2c365a" class="ion-padding">Leaderboard Hari
+                Ini
+              </ion-text>
+            </ion-col>
+            <ion-col size="4" class="ion-text-end" (click)="LihatLaporanTransaksi()">
+              <ion-text style="font-size: 12px; color: var(--ion-color-rid-goodcream-two);">Lihat Semua</ion-text>
+            </ion-col>
+          </ion-row>
+          <br>
+        </div>
+
+        <div class="scrollYnew">
+          <div *ngIf="idKaryawan">
+            <div *ngIf="firebaseService.leaderboardDataList as leaderboardDataList">
+              <div *ngFor="let leaderboardData of leaderboardDataList">
+                <ion-card class="ion-no-padding ion-no-margin">
+                  <ion-item lines="none" color="translucent">
+                    <div class="IconAdd">
+                      <img src="{{leaderboardData.photoURL}}" style="border-radius: 10px;"
+                        referrerpolicy="no-referrer" />
+                    </div>
+                    <span style="padding-left: 16px;"> </span>
+                    <ion-label>
+                      <ion-text style="font-weight: 700; color: #38465F;">{{leaderboardData.namaKaryawan}}</ion-text>
+                      <br>
+                      <ion-text style="font-size: 12px; color: #38465F;">{{leaderboardData.bagian}}</ion-text>
+                    </ion-label>
+                    <ion-button fill="clear" slot="end" disable style="color: #38465F;">{{leaderboardData.absen1}}
+                    </ion-button>
+                  </ion-item>
+                </ion-card>
+                <hr style="height: 16px; margin: 0px;">
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!idKaryawan" class="ion-padding-horizontal">
+            <ion-skeleton-text [animated]="true"
+              style="width: 100%; height: 50px; border-radius: 5px;"></ion-skeleton-text>
+            <hr style="height: 16px; margin: 0px;">
+            <ion-skeleton-text [animated]="true"
+              style="width: 100%; height: 50px; border-radius: 5px;"></ion-skeleton-text>
+            <hr style="height: 16px; margin: 0px;">
+            <ion-skeleton-text [animated]="true"
+              style="width: 100%; height: 50px; border-radius: 5px;"></ion-skeleton-text>
+            <hr style="height: 16px; margin: 0px;">
+            <ion-skeleton-text [animated]="true"
+              style="width: 100%; height: 50px; border-radius: 5px;"></ion-skeleton-text>
+            <hr style="height: 16px; margin: 0px;">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="TambahTransaksi()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab> -->
+    </div>
+  </ion-content>
+</div>
+
+<div *ngIf="isPageLeaderboard" class="pageLeaderboard">
+  <ion-content [fullscreen]="true">
+    <!-- scrollY="false" -->
+    <div *ngIf="isPageLeaderboard" class="pageLeaderboard">
+      <br>
+      <br>
+
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="3">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">Leaderboard</ion-text>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+
+      <!-- <div class="scrollYnew" scrollY="true">
+        <div *ngFor="let kategoriData of kategoriDataList">
+          <div *ngIf="kategoriData.jenisKategori == 'Pemasukan'">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                    <ion-col style="padding-left: 0px; display: block;">
+                      <div style="padding: 10px 0px;">
+                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
+                        <br>
+                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                      </div>
+                    </ion-col>
+                  </div>
+
+                  <div class="IconAdd">
+                    <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option>Edit</ion-item-option>
+                  <ion-item-option color="danger">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <div *ngIf="kategoriData.jenisKategori == 'Pengeluaran'">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                    <ion-col style="padding-left: 0px; display: block;">
+                      <div style="padding: 10px 0px;">
+                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
+                        <br>
+                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                      </div>
+                    </ion-col>
+                  </div>
+
+                  <div class="IconRemove">
+                    <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
+                  </div>
+
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option>Edit</ion-item-option>
+                  <ion-item-option color="danger">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="footerKategori">
+        <ion-row class="btnTambah ion-activatable ripple-parent">
+          <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+            <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+            <ion-text style="color: white;">Tambah Kategori</ion-text>
+          </ion-col>
+        </ion-row>
+      </div> -->
+
+    </div>
+  </ion-content>
+
+</div>
+
+<div *ngIf="isPageHistory" class="pageHistory">
+  <ion-content [fullscreen]="true">
+    <!-- scrollY="false" -->
+    <div *ngIf="isPageHistory" class="pageHistory">
+      <br>
+      <br>
+
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="3">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">History</ion-text>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+
+      <!-- <div class="scrollYnew" scrollY="true">
+        <div *ngFor="let kategoriData of kategoriDataList">
+          <div *ngIf="kategoriData.jenisKategori == 'Pemasukan'">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                    <ion-col style="padding-left: 0px; display: block;">
+                      <div style="padding: 10px 0px;">
+                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
+                        <br>
+                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                      </div>
+                    </ion-col>
+                  </div>
+
+                  <div class="IconAdd">
+                    <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option>Edit</ion-item-option>
+                  <ion-item-option color="danger">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <div *ngIf="kategoriData.jenisKategori == 'Pengeluaran'">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
+                    <ion-col style="padding-left: 0px; display: block;">
+                      <div style="padding: 10px 0px;">
+                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
+                        <br>
+                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
+                      </div>
+                    </ion-col>
+                  </div>
+
+                  <div class="IconRemove">
+                    <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
+                  </div>
+
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option>Edit</ion-item-option>
+                  <ion-item-option color="danger">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="footerKategori">
+        <ion-row class="btnTambah ion-activatable ripple-parent">
+          <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+            <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+            <ion-text style="color: white;">Tambah Kategori</ion-text>
+          </ion-col>
+        </ion-row>
+      </div> -->
+
+    </div>
+  </ion-content>
+
+</div>
+
+<div *ngIf="isPageProfile" class="pageProfile">
+  <ion-content [fullscreen]="true">
+    <!-- scrollY="false" -->
+    <div *ngIf="isPageProfile" class="pageProfile">
+      <br>
+      <br>
+
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="3">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">Profile</ion-text>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+
+      <div class="ion-text-center ion-align-self-center"
+        style="background-color: var(--ion-color-rid-goodgreen-five); width: 20vw; height: 20vw; border-radius: 10vw;">
+        <ion-row class="ion-no-padding" style="height: 100%;">
+          <ion-col class="ion-no-padding ion-align-self-center ion-text-center" *ngIf="auth.user | async as user">
+            <img src="{{user.photoURL}}" style="margin-top: 3px; width: 17vw; height: 17vw; border-radius: 8.5vw;"
+              referrerpolicy="no-referrer" />
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div class="ion-text-center ion-padding">
+        <ion-text style="font-size: 20px; font-weight: 500; margin-left: 5px;" color="rid-goodgreen-two"
+          *ngIf="idKaryawan">ID Karyawan : {{idKaryawan}}</ion-text>
+        <ion-text style="font-size: 20px; font-weight: 500; margin-left: 5px;" color="rid-goodgreen-two"
+          *ngIf="!idKaryawan">ID Karyawan : -</ion-text>
+        <br>
+        <hr style="height: 10px; margin: 0px;">
+        <ion-button color="rid-goodgreen-two" shape="round" (click)="EditIdKaryawan()">Edit ID Karyawan</ion-button>
+      </div>
+
+      <div class="ion-padding" *ngIf="auth.user | async as user">
+        <ion-item class="border" lines="none">
+          <ion-label>Nama</ion-label>
+          <ion-text *ngIf="idKaryawan">{{namaKaryawan}}</ion-text>
+          <ion-text *ngIf="!idKaryawan">{{user.displayName}}</ion-text>
+        </ion-item>
+        <br>
+        <ion-item class="border" lines="none">
+          <ion-label>Email</ion-label>
+          <ion-text>{{user.email}}</ion-text>
+        </ion-item>
+        <br>
+        <ion-item class="border" lines="none">
+          <ion-label>Job</ion-label>
+          <ion-text *ngIf="idKaryawan">{{jabatan}}</ion-text>
+          <ion-skeleton-text *ngIf="!idKaryawan" [animated]="true"
+            style="width: 40vw; height: 35%;"></ion-skeleton-text>
+        </ion-item>
+        <br>
+        <ion-item class="border" lines="none">
+          <ion-label>Bagian</ion-label>
+          <ion-text *ngIf="idKaryawan">{{bagian}}</ion-text>
+          <ion-skeleton-text *ngIf="!idKaryawan" [animated]="true"
+            style="width: 40vw; height: 35%;"></ion-skeleton-text>
+        </ion-item>
+        <br>
+        <ion-item class="border" lines="none">
+          <ion-label>Jam Kerja</ion-label>
+          <ion-text *ngIf="idKaryawan">{{jamKerja}}</ion-text>
+          <ion-skeleton-text *ngIf="!idKaryawan" [animated]="true"
+            style="width: 40vw; height: 35%;"></ion-skeleton-text>
+        </ion-item>
+      </div>
+
+      <div class="footerProfile">
+        <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="Logout()">
+          <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+            <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+            <ion-text style="color: white;">Logout</ion-text>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </div>
+  </ion-content>
+</div>
+
+<div *ngIf="isPageTentang" class="pageTentang">
+  <ion-content [fullscreen]="true">
+    <div *ngIf="isPageTentang" class="ion-padding" class="pageTentang">
+      <br>
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="3">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">Tentang</ion-text>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <br>
+      <br>
+
+      <div>
+        <div class="likeCard" style="background-image: url(../../assets/images/img-2.png); background-size: 100%;">
+          <div style="padding-left: 30px; padding-top: 35px;">
+            <ion-text style="color: white; font-size: 9vw; font-weight: 700;">Pro Absen</ion-text> <br>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="ion-padding">
+        <ion-text style="font-size: 24px; font-weight: 700; color: var(--ion-color-rid-goodgreen-two);">Pro
+          Absen</ion-text>
+        <hr style="margin-bottom: 5px;">
+        <ion-text style="font-size: 14px; color: var(--ion-color-rid-goodgreen-two);">Merupakan aplikasi
+          absensi</ion-text>
+      </div>
+      <br>
+
+      <div class="ion-padding">
+        <ion-button shape="round" color="rid-goodgreen-three" (click)="HapusSemuaDataAbsen()">Hapus Semua Data
+          Absen</ion-button>
+      </div>
+    </div>
+  </ion-content>
+</div>
+
+<div *ngIf="isPageAdministrator" class="pageAdministrator">
+  <ion-content [fullscreen]="true">
+    <!-- scrollY="false" -->
+    <div *ngIf="isPageAdministrator" class="pageAdministrator">
+      <br>
+      <br>
+
+      <ion-row style="padding: 0px 16px; ">
+        <ion-col size="3">
+          <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center ion-align-self-center">
+          <ion-text style="font-size: 20px; font-weight: 500;">Administrator</ion-text>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+        </ion-col>
+      </ion-row>
+
+      <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+
+      <!-- <div class="ion-text-center ion-padding">
+        <ion-text style="font-size: 20px; font-weight: 500; margin-left: 5px;" color="rid-goodgreen-two"
+          *ngIf="auth.user | async as user">ID Karyawan : {{idKaryawan}}</ion-text>
+        <br>
+      </div> -->
+
+      <ion-segment [scrollable]="true" (ionChange)="SegmentChanged($event)" [(ngModel)]="segment" name="segment">
+        <ion-segment-button value="overview">
+          <ion-label>Overview</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="karyawan">
+          <ion-label>Karyawan</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="jam_kerja">
+          <ion-label>Jam Kerja</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="bagian">
+          <ion-label>Bagian</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="jabatan">
+          <ion-label>Jabatan</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="kantor">
+          <ion-label>Kantor</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <div style="height: 1px; border: 1px solid var(--ion-color-rid-goodgreen-two);"></div>
+
+      <!-- /////////////... segment overview...///////////// -->
+
+      <div *ngIf="segment === 'overview'" class="flexContainer">
+        <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+        <div class="scrollYnew">
+          <div style="padding: 0px 16px;">
+            <div class="dash1">
+              <ion-row class="ion-no-padding ion-no-margin">
+                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                </ion-col>
+                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="icon">
+                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
+                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <br>
+              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-row class="ion-no-padding">
+                <ion-col size="7" class="ion-no-padding">
+                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                </ion-col>
+                <ion-col size="5" class="ion-no-padding ion-text-end">
+                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                </ion-col>
+              </ion-row>
+              <div style="position: relative; height: 12px;">
+                <div class="persenKaryawanTotal"></div>
+                <div class="persenKaryawanExisting" style="width: 67%;"></div>
+                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
+              </div>
+              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
+              <div>
+                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
+              </div>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <!-- // -->
+
+            <div class="dash1">
+              <ion-row class="ion-no-padding ion-no-margin">
+                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                </ion-col>
+                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="icon">
+                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
+                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <br>
+              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-row class="ion-no-padding">
+                <ion-col size="7" class="ion-no-padding">
+                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                </ion-col>
+                <ion-col size="5" class="ion-no-padding ion-text-end">
+                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                </ion-col>
+              </ion-row>
+              <div style="position: relative; height: 12px;">
+                <div class="persenKaryawanTotal"></div>
+                <div class="persenKaryawanExisting" style="width: 67%;"></div>
+                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
+              </div>
+              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
+              <div>
+                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
+              </div>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <!-- // -->
+
+            <div class="dash1">
+              <ion-row class="ion-no-padding ion-no-margin">
+                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                </ion-col>
+                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="icon">
+                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
+                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <br>
+              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-row class="ion-no-padding">
+                <ion-col size="7" class="ion-no-padding">
+                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                </ion-col>
+                <ion-col size="5" class="ion-no-padding ion-text-end">
+                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                </ion-col>
+              </ion-row>
+              <div style="position: relative; height: 12px;">
+                <div class="persenKaryawanTotal"></div>
+                <div class="persenKaryawanExisting" style="width: 67%;"></div>
+                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
+              </div>
+              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
+              <div>
+                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
+              </div>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <!-- // -->
+
+            <div class="dash1">
+              <ion-row class="ion-no-padding ion-no-margin">
+                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                </ion-col>
+                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="icon">
+                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
+                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <br>
+              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-row class="ion-no-padding">
+                <ion-col size="7" class="ion-no-padding">
+                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                </ion-col>
+                <ion-col size="5" class="ion-no-padding ion-text-end">
+                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                </ion-col>
+              </ion-row>
+              <div style="position: relative; height: 12px;">
+                <div class="persenKaryawanTotal"></div>
+                <div class="persenKaryawanExisting" style="width: 67%;"></div>
+                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
+              </div>
+              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
+              <div>
+                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
+              </div>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+
+          </div>
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <!-- <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahKaryawan()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Eksport Data Absen</ion-text>
+            </ion-col>
+          </ion-row>
+        </div> -->
+      </div>
+
+      <!-- /////////////... end segment overview...///////////// -->
+
+      <!-- /////////////... segment karyawan...///////////// -->
+
+      <div *ngIf="segment === 'karyawan'">
+        <ion-searchbar mode="ios" animated="true" show-cancel-button="focus" enterkeyhint="search"
+          placeholder="Search by Id / Name"></ion-searchbar>
+      </div>
+
+      <div *ngIf="segment === 'karyawan'" class="flexContainer">
+        <div class="scrollYnew">
+
+          <div *ngFor="let karyawanData of karyawanDataList | async">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <!-- <div *ngIf="auth.user | async as user" style="padding-top: 8px; padding-bottom: 8px;">
+                    <img src="{{user.photoURL}}"
+                      style="margin-top: 3px; width: 50px; height: 50px;  border-radius: 10px;"
+                      referrerpolicy="no-referrer" />
+                  </div> -->
+                  <div style="padding-top: 8px; padding-bottom: 8px;">
+                    <div style="height: 50px;  border-radius: 10px;"></div>
+                  </div>
+                  <div class="IconAdd" style="padding-top: 8px; padding-bottom: 8px;">
+                    <ion-icon name="person" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                  <span style="padding-left: 16px;"> </span>
+                  <ion-label>
+                    <ion-text style="font-weight: 700; color: #38465F;">{{karyawanData.idKaryawan}} -
+                      {{karyawanData.namaKaryawan}}</ion-text>
+                    <br>
+                    <ion-text style="font-size: 12px; color: #38465F;">{{karyawanData.bagian}}</ion-text>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="EditKaryawan(karyawanData)" color="rid-goodgreen-two">Edit</ion-item-option>
+                  <ion-item-option (click)="HapusKaryawan(karyawanData)"
+                    color="rid-goodcream-two">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahKaryawan()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Tambah Karyawan</ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- /////////////... end segment karyawan...///////////// -->
+
+      <!-- /////////////... segment jam kerja...///////////// -->
+
+      <div *ngIf="segment === 'jam_kerja'">
+        <ion-searchbar mode="ios" animated="true" show-cancel-button="focus" enterkeyhint="search"
+          placeholder="Search by Id / Name"></ion-searchbar>
+      </div>
+
+      <div *ngIf="segment === 'jam_kerja'" class="flexContainer">
+        <div class="scrollYnew">
+
+          <div *ngFor="let jamKerjaData of jamKerjaDataList | async">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <!-- <div *ngIf="auth.user | async as user" style="padding-top: 8px; padding-bottom: 8px;">
+                    <img src="{{user.photoURL}}"
+                      style="margin-top: 3px; width: 50px; height: 50px;  border-radius: 10px;"
+                      referrerpolicy="no-referrer" />
+                  </div> -->
+                  <div style="padding-top: 8px; padding-bottom: 8px;">
+                    <div style="height: 50px;  border-radius: 10px;"></div>
+                  </div>
+                  <div class="IconAdd" style="padding-top: 8px; padding-bottom: 8px;">
+                    <ion-icon name="time" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                  <span style="padding-left: 16px;"> </span>
+                  <ion-label>
+                    <ion-text style="font-weight: 700; color: #38465F;">{{jamKerjaData.jamKerja}}</ion-text>
+                    <br>
+                    <ion-text
+                      style="font-size: 12px; color: #38465F;">{{jamKerjaData.absenDatangStart}}-{{jamKerjaData.absenPulangEnd}}</ion-text>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="EditJamKerja(jamKerjaData)" color="rid-goodgreen-two">Edit</ion-item-option>
+                  <ion-item-option (click)="HapusJamKerja(jamKerjaData)"
+                    color="rid-goodcream-two">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahJamKerja()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Tambah Jam Kerja</ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- /////////////... end segment jam kerja...///////////// -->
+
+      <!-- /////////////... segment bagian...///////////// -->
+
+      <div *ngIf="segment === 'bagian'">
+        <ion-searchbar mode="ios" animated="true" show-cancel-button="focus" enterkeyhint="search"
+          placeholder="Search by Id / Name"></ion-searchbar>
+      </div>
+
+      <div *ngIf="segment === 'bagian'" class="flexContainer">
+        <div class="scrollYnew">
+
+          <div *ngFor="let bagianData of bagianDataList | async">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <!-- <div *ngIf="auth.user | async as user" style="padding-top: 8px; padding-bottom: 8px;">
+                    <img src="{{user.photoURL}}"
+                      style="margin-top: 3px; width: 50px; height: 50px;  border-radius: 10px;"
+                      referrerpolicy="no-referrer" />
+                  </div> -->
+                  <div style="padding-top: 8px; padding-bottom: 8px;">
+                    <div style="height: 50px;  border-radius: 10px;"></div>
+                  </div>
+                  <div class="IconAdd" style="padding-top: 8px; padding-bottom: 8px;">
+                    <ion-icon name="id-card" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                  <span style="padding-left: 16px;"> </span>
+                  <ion-label>
+                    <ion-text style="font-weight: 700; color: #38465F;">{{bagianData.bagian}}</ion-text>
+                    <br>
+                    <ion-text style="font-size: 12px; color: #38465F;">Jam Kerja: {{bagianData.jamKerja}}</ion-text>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="EditBagian(bagianData)" color="rid-goodgreen-two">Edit</ion-item-option>
+                  <ion-item-option (click)="HapusBagian(bagianData)" color="rid-goodcream-two">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahBagian()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Tambah Bagian</ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- /////////////... end segment bagian...///////////// -->
+
+      <!-- /////////////... segment jabatan...///////////// -->
+
+      <div *ngIf="segment === 'jabatan'">
+        <ion-searchbar mode="ios" animated="true" show-cancel-button="focus" enterkeyhint="search"
+          placeholder="Search by Id / Name"></ion-searchbar>
+      </div>
+
+      <div *ngIf="segment === 'jabatan'" class="flexContainer">
+        <div class="scrollYnew">
+
+          <div *ngFor="let jabatanData of jabatanDataList | async">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <!-- <div *ngIf="auth.user | async as user" style="padding-top: 8px; padding-bottom: 8px;">
+                    <img src="{{user.photoURL}}"
+                      style="margin-top: 3px; width: 50px; height: 50px;  border-radius: 10px;"
+                      referrerpolicy="no-referrer" />
+                  </div> -->
+                  <div style="padding-top: 8px; padding-bottom: 8px;">
+                    <div style="height: 50px;  border-radius: 10px;"></div>
+                  </div>
+                  <div class="IconAdd" style="padding-top: 8px; padding-bottom: 8px;">
+                    <ion-icon name="prism" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                  <span style="padding-left: 16px;"> </span>
+                  <ion-label>
+                    <ion-text style="font-weight: 700; color: #38465F;">{{jabatanData.jabatan}}</ion-text>
+                    <br>
+                    <ion-text style="font-size: 12px; color: #38465F;">{{jabatanData.bagian}}</ion-text>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="EditJabatan(jabatanData)" color="rid-goodgreen-two">Edit</ion-item-option>
+                  <ion-item-option (click)="HapusJabatan(jabatanData)" color="rid-goodcream-two">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahJabatan()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Tambah Jabatan</ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- /////////////... end segment jabatan...///////////// -->
+
+      <!-- /////////////... segment kantor...///////////// -->
+
+      <div *ngIf="segment === 'kantor'">
+        <ion-searchbar mode="ios" animated="true" show-cancel-button="focus" enterkeyhint="search"
+          placeholder="Search by Id / Name"></ion-searchbar>
+      </div>
+
+      <div *ngIf="segment === 'kantor'" class="flexContainer">
+        <div class="scrollYnew">
+
+          <div *ngFor="let kantorData of kantorDataList | async">
+            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+            <div style="padding: 0px 16px;">
+              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
+                <ion-item lines="none" color="rid-white">
+                  <!-- <div *ngIf="auth.user | async as user" style="padding-top: 8px; padding-bottom: 8px;">
+                    <img src="{{user.photoURL}}"
+                      style="margin-top: 3px; width: 50px; height: 50px;  border-radius: 10px;"
+                      referrerpolicy="no-referrer" />
+                  </div> -->
+                  <div style="padding-top: 8px; padding-bottom: 8px;">
+                    <div style="height: 50px;  border-radius: 10px;"></div>
+                  </div>
+                  <div class="IconAdd" style="padding-top: 8px; padding-bottom: 8px;">
+                    <ion-icon name="business" style="color: #E8FAED;"></ion-icon>
+                  </div>
+
+                  <span style="padding-left: 16px;"> </span>
+                  <ion-label>
+                    <ion-text style="font-weight: 700; color: #38465F;">{{kantorData.kantor}}</ion-text>
+                    <br>
+                    <ion-text style="font-size: 12px; color: #38465F;">{{kantorData.alamat}}</ion-text>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option (click)="EditKantor(kantorData)" color="rid-goodgreen-two">Edit</ion-item-option>
+                  <ion-item-option (click)="HapusKantor(kantorData)" color="rid-goodcream-two">Hapus</ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </div>
+          </div>
+
+          <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
+        </div>
+
+        <div class="footerProfile">
+          <ion-row class="btnTambah ion-activatable ripple-parent" button (click)="TambahKantor()">
+            <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
+              <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
+              <ion-text style="color: white;">Tambah Kantor</ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- /////////////... end segment kantor...///////////// -->
+    </div>
+  </ion-content>
+</div>
