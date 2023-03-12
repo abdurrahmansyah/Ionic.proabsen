@@ -8,6 +8,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class GlobalService {
   IndexPageData: IndexPage = new IndexPage();
   kehadiranData: KehadiranData = new KehadiranData();
+  page: string = 'Home';
 
   // karyawanDataList: KaryawanData[] = [];
   transaksiDataList: AbsenData[] = [];

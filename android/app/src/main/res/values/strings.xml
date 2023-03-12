@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">pro absen</string>
+    <string name="title_activity_main">pro absen</string>
+    <string name="package_name">com.ridhtech.proabsen</string>
+    <string name="custom_url_scheme">com.ridhtech.proabsen</string>
+    <string name="server_client_id">723073598683-21fhhrmq3kkq1t6s3trpg6pfsf0bnh5j.apps.googleusercontent.com</string>
+</resources>

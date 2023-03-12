@@ -16,8 +16,12 @@
           <br>
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/Home" lines="none" detail="false"
+            <!-- <ion-item routerDirection="root" routerLink="/home/Home" lines="none" detail="false"
               routerLinkActive="selected">
+              <ion-icon slot="start" name="home"></ion-icon>
+              <ion-label>Home</ion-label>
+            </ion-item> -->
+            <ion-item button (click)="ToHome()" lines="none" detail="false" [ngClass]="{'selected': isPageHome}">
               <ion-icon slot="start" name="home"></ion-icon>
               <ion-label>Home</ion-label>
             </ion-item>
@@ -29,15 +33,19 @@
           <ion-list-header>Attendance</ion-list-header>
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/Leaderboard" lines="none" detail="false"
+            <!-- <ion-item routerDirection="root" routerLink="/home/Leaderboard" lines="none" detail="false"
               routerLinkActive="selected">
+              <ion-icon slot="start" name="ribbon"></ion-icon>
+              <ion-label>Leaderboard</ion-label>
+            </ion-item> -->
+            <ion-item button (click)="ToLeaderboard()" lines="none" detail="false"
+              [ngClass]="{'selected': isPageLeaderboard}">
               <ion-icon slot="start" name="ribbon"></ion-icon>
               <ion-label>Leaderboard</ion-label>
             </ion-item>
           </ion-menu-toggle>
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/History" lines="none" detail="false"
-              routerLinkActive="selected">
+            <ion-item button (click)="ToHistory()" lines="none" detail="false" [ngClass]="{'selected': isPageHistory}">
               <ion-icon slot="start" name="receipt"></ion-icon>
               <ion-label>History</ion-label>
             </ion-item>
@@ -49,8 +57,7 @@
           <ion-list-header>Menu Profile</ion-list-header>
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/Profile" lines="none" detail="false"
-              routerLinkActive="selected">
+            <ion-item button (click)="ToProfile()" lines="none" detail="false" [ngClass]="{'selected': isPageProfile}">
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>Profile</ion-label>
             </ion-item>
@@ -62,8 +69,7 @@
           <ion-list-header>Lainnya</ion-list-header>
 
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/Tentang" lines="none" detail="false"
-              routerLinkActive="selected">
+            <ion-item button (click)="ToTentang()" lines="none" detail="false" [ngClass]="{'selected': isPageTentang}">
               <ion-icon slot="start" name="help-circle"></ion-icon>
               <ion-label>Tentang</ion-label>
             </ion-item>
@@ -88,8 +94,7 @@
       <ion-footer *ngIf="isAdmin">
         <ion-toolbar lines="none">
           <ion-menu-toggle auto-hide="false">
-            <ion-item routerDirection="root" routerLink="/home/Administrator" lines="none" detail="false"
-              routerLinkActive="selected">
+            <ion-item button (click)="ToAdministrator()" lines="none" detail="false" [ngClass]="{'selected': isPageAdministrator}">
               <ion-icon slot="start" name="pulse"></ion-icon>
               <ion-label>Administrator</ion-label>
             </ion-item>

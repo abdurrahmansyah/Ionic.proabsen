@@ -12,31 +12,19 @@ export interface Item { name: string; }
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  private itemsCollection: AngularFirestoreCollection<Item>;
-  items: Observable<Item[]>;
-
   constructor(
     private authService: AuthService,
     public auth: AngularFireAuth,
     private afs: AngularFirestore
-  ) {
-    this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
-    this.items.subscribe(res => {
-      console.log(res);
-    });
-  }
-
-  addItem() {
-    var item: Item = { name: "Macan" }
-    this.itemsCollection.add(item);
-  }
+  ) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.authService.login();
+    this.authService.loginWithGoogleAuth();
+    // this.authService.loginRedirect();
+    // this.authService.login();
   }
 
   logout() {

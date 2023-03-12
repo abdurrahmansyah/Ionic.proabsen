@@ -1,5 +1,7 @@
 {
-  "name": "absenv3",
-  "integrations": {},
+  "name": "pro absen",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

@@ -8,11 +8,13 @@ const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home/Home',
+    // redirectTo: 'home/Home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'home/:id',
+    path: 'home',
+    // path: 'home/:id',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
     canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
   },

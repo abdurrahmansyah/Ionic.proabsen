@@ -104,19 +104,29 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') ?? '';
-    this.isPageHome = this.folder == this.globalService.IndexPageData.Home ? true : false;
-    this.isPageLeaderboard = this.folder == this.globalService.IndexPageData.Leaderboard ? true : false;
-    this.isPageHistory = this.folder == this.globalService.IndexPageData.History ? true : false;
-    this.isPageProfile = this.folder == this.globalService.IndexPageData.Profile ? true : false;
-    this.isPageTentang = this.folder == this.globalService.IndexPageData.Tentang ? true : false;
-    this.isPageAdministrator = this.folder == this.globalService.IndexPageData.Administrator ? true : false;
+    console.log("whats page?", this.globalService.page);
+
+    this.ConfusingHomeView();
+  }
+
+  public ConfusingHomeView() {
+    setInterval(() => {
+      // this.folder = this.activatedRoute.snapshot.paramMap.get('id') ?? '';
+      this.folder = this.globalService.page;
+      this.isPageHome = this.folder == this.globalService.IndexPageData.Home ? true : false;
+      this.isPageLeaderboard = this.folder == this.globalService.IndexPageData.Leaderboard ? true : false;
+      this.isPageHistory = this.folder == this.globalService.IndexPageData.History ? true : false;
+      this.isPageProfile = this.folder == this.globalService.IndexPageData.Profile ? true : false;
+      this.isPageTentang = this.folder == this.globalService.IndexPageData.Tentang ? true : false;
+      this.isPageAdministrator = this.folder == this.globalService.IndexPageData.Administrator ? true : false;
+    }, 100);
   }
 
   public async TambahTransaksi() { }
   public async EditTransaksi(transaksiData: AbsenData) { }
   public LihatLaporanTransaksi() {
-    this.router.navigateByUrl('/home/Leaderboard', { replaceUrl: true });
+    this.globalService.page = this.globalService.IndexPageData.Leaderboard;
+    // this.router.navigateByUrl('/home/Leaderboard', { replaceUrl: true });
   }
   public EditLimit() { }
 
@@ -176,12 +186,14 @@ export class HomePage {
   }
 
   public ToHistory() {
-    this.router.navigateByUrl('/home/History', { replaceUrl: false });
+    // this.router.navigateByUrl('/home/History', { replaceUrl: false });
+    this.globalService.page = this.globalService.IndexPageData.History;
     console.log("ToHistory");
   }
 
   public ToProfile() {
-    this.router.navigateByUrl('/home/Profile', { replaceUrl: false });
+    // this.router.navigateByUrl('/home/Profile', { replaceUrl: false });
+    this.globalService.page = this.globalService.IndexPageData.Profile;
     console.log("ToProfile");
   }
 
