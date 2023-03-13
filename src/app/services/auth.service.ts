@@ -6,6 +6,8 @@ import firebase from 'firebase/compat/app';
 import { Storage } from '@ionic/storage-angular';
 import { getAuth, signInWithRedirect } from "firebase/auth";
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { GlobalService } from './global.service';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,8 @@ export class AuthService {
   constructor(
     public auth: AngularFireAuth,
     private router: Router,
-    private storage: Storage
+    private globalService: GlobalService,
+    private loadingCtrl: LoadingController
   ) { }
 
   // async createUserWithEmailAndPassword(email: string, password: string) {
@@ -49,11 +52,21 @@ export class AuthService {
   }
 
   async loginWithGoogleAuth() {
-    let googleUser = await GoogleAuth.signIn();
-    const credential = firebase.auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-    this.auth.signInAndRetrieveDataWithCredential(credential).then(async res => {
-      console.log("res", res);
-      this.router.navigateByUrl('/home', { replaceUrl: true });
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      spinner: 'circles',
+    });
+
+    await GoogleAuth.signIn().then(async res => {
+      loading.present();
+      const credential = firebase.auth.GoogleAuthProvider.credential(res.authentication.idToken);
+      await this.auth.signInAndRetrieveDataWithCredential(credential).then(async res => {
+        loading.dismiss();
+        this.router.navigateByUrl('/home', { replaceUrl: true });
+      });
+    }).catch(er => {
+      loading.dismiss();
+      this.globalService.PresentAlert("error signIn: " + JSON.stringify(er));
     });
   }
 

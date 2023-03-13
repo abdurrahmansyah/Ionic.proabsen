@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "723073598683",
+    "project_id": "absenv3-7b333",
+    "storage_bucket": "absenv3-7b333.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723073598683:android:4d1db0ef67109c533938fe",
+        "android_client_info": {
+          "package_name": "com.ridhtech.proabsen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723073598683-nc84oh11ojiollv019omrvmq2r1j6hsc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ridhtech.proabsen",
+            "certificate_hash": "8c117432b8e4ee385fc89e87725f8c85105fb8d3"
+          }
+        },
+        {
+          "client_id": "723073598683-21fhhrmq3kkq1t6s3trpg6pfsf0bnh5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjg6xbNkhASCd_d1DokCTDNeO1MThpSMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723073598683-21fhhrmq3kkq1t6s3trpg6pfsf0bnh5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
