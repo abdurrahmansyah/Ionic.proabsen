@@ -633,7 +633,7 @@
 
         <div class="scrollYnew">
           <div style="padding: 0px 16px;">
-            <div class="dash1">
+            <div class="dash1" button (click)="exportExcelExcelJS()">
               <ion-row class="ion-no-padding ion-no-margin">
                 <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
                   <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
@@ -674,6 +674,8 @@
             </div>
             <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
 
+            <ion-button (click)="exportExcelExcelJS()" expand="block">Download File</ion-button>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
             <!-- // -->
 
             <div class="dash1">

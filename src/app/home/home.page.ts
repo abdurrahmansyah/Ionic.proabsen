@@ -16,6 +16,7 @@ import { JamKerjaComponent } from '../components/jam-kerja/jam-kerja.component';
 import { formatDate } from '@angular/common';
 import { Geolocation } from '@capacitor/geolocation';
 import { AbsenComponent } from '../components/absen/absen.component';
+import { ExcelService } from '../services/excel.service';
 
 @Component({
   selector: 'app-home',
@@ -78,7 +79,8 @@ export class HomePage {
     private modalController: ModalController,
     private alertController: AlertController,
     private actionSheetCtrl: ActionSheetController,
-    private router: Router
+    private router: Router,
+    private excelService: ExcelService
   ) {
     this.InitializeApp();
     this.Timer();
@@ -608,6 +610,27 @@ export class HomePage {
 
   public SegmentChanged(ev: any) {
     // console.log(ev);
+  }
+
+  public exportExcelExcelJS() {
+    const title = 'Car Sell Report';
+    const header = ['Year', 'Month', 'Make', 'Model', 'Quantity', 'Pct'];
+    const data = [
+      [2007, 1, 'Volkswagen ', 'Volkswagen Passat', 1267, 10],
+      [2007, 1, 'Toyota ', 'Toyota Rav4', 819, 6.5],
+      [2007, 1, 'Toyota ', 'Toyota Avensis', 787, 6.2],
+      [2007, 1, 'Volkswagen ', 'Volkswagen Golf', 720, 5.7],
+      [2007, 1, 'Toyota ', 'Toyota Corolla', 691, 5.4],
+    ];
+    const worksheetname = 'Car Export Cok';
+    const fileName = 'CarDataCok.xlsx';
+    this.excelService.exportListAsExcelJS({
+      fileName,
+      worksheetname,
+      title,
+      header,
+      data,
+    });
   }
 
   public async TambahKaryawan() {
