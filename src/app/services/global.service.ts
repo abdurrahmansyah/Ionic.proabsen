@@ -171,9 +171,9 @@ export class JabatanData {
 export class KantorData {
   public kantor: string = String.toString();
   public alamat: string = String.toString();
-  public longitude: string = String.toString();
-  public latitude: string = String.toString();
-  public radius: string = String.toString();
+  public longitude: number = 0;
+  public latitude: number = 0;
+  public radius: number = 0;
 
   constructor() { }
 }

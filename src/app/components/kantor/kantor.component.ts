@@ -14,9 +14,9 @@ export class KantorComponent implements OnInit {
   public id: string;
   public kantor: string;
   public alamat: string;
-  public longitude: string;
-  public latitude: string;
-  public radius: string;
+  public longitude: number;
+  public latitude: number;
+  public radius: number;
   private kantorDataParent: any;
 
   public isAddNew: boolean = false;

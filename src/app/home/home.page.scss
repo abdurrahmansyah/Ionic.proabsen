@@ -173,7 +173,7 @@ ion-card {
     right: 0px;
     left: 0px;
     z-index: 999;
-    background-color: var(--ion-color-rid-goodgreen-four);
+    // background-color: var(--ion-color-rid-goodgreen-four);
   }
 }
 
@@ -386,6 +386,7 @@ ion-card {
         background-color: var(--ion-color-rid-goodgreen-one);
         color: var(--ion-color-rid-goodgreen-five);
         border-radius: 10px;
+        position: relative;
 
         .profilImageKaryawan {
           // display: flex !important;
@@ -397,6 +398,8 @@ ion-card {
           // position: relative;
 
           .one {
+            position: absolute;
+            left: 0px;
             border-radius: 20px;
             height: 40px;
             width: 40px;
@@ -419,9 +422,13 @@ ion-card {
             position: absolute;
             right: -10px;
           }
+          .skeleton{
+            position: absolute;
+            right: 0px;
+          }
         }
 
-        .persenKaryawanTotal {
+        .persenKaryawanExisting {
           background-color: var(--ion-color-rid-goodgreen-three);
           height: 12px;
           border-radius: 5px;
@@ -431,7 +438,7 @@ ion-card {
           left: 0px;
         }
 
-        .persenKaryawanExisting {
+        .persenKaryawanTotal {
           background-color: var(--ion-color-rid-goodgreen-five);
           height: 12px;
           border-radius: 5px;
@@ -439,6 +446,30 @@ ion-card {
           top: 5px;
           left: 0px;
         }
+
+        .kehadiran {
+          overflow: auto;
+          white-space: nowrap;
+
+          .map {
+            // background-color: #385f3a;
+            background-color: var(--ion-color-rid-goodgreen-five);
+            height: 100px;
+            min-width: 100px;
+            width: max-content;
+            display: inline-flex;
+            color: white;
+            border-radius: 10px;
+            overflow: auto;
+          }
+        }
+      }
+
+      .likeCard {
+        background-image: url(../../assets/images/img-3.png); background-size: 100%; width: 100%;
+        height: 10vh;
+        border-radius: 20px;
+        position: relative;
       }
     }
   }

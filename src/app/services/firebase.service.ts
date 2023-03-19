@@ -58,7 +58,7 @@ export class FirebaseService {
       this.globalService.kantorDataList = kantorDataList;
     });
 
-    this.absenDataListCollection = this.afs.collection<AbsenData>('absen', ref => ref.orderBy('tanggal'));
+    this.absenDataListCollection = this.afs.collection<AbsenData>('absen', ref => ref.orderBy('tanggal').orderBy('absen1'));
     this.absenDataList = this.absenDataListCollection.valueChanges({ idField: 'id' });
     this.absenDataList.subscribe(absenDataList => {
       this.globalService.absenDataList = absenDataList;
@@ -70,7 +70,7 @@ export class FirebaseService {
   private InitializeLeaderboardData() {
     var date = new Date();
     var year = date.getFullYear();
-    var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+    var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
     var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
     var tanggal = year + '-' + month + '-' + day;
     // tanggal = "2023-02-06";
@@ -78,10 +78,10 @@ export class FirebaseService {
     this.absenDataListForleaderboardCollection = this.afs.collection<AbsenData>('absen', ref => ref.where('tanggal', '==', tanggal).where('kehadiran', '==', this.globalService.kehadiranData.Hadir).orderBy('absen1'));
     this.absenDataListForleaderboard = this.absenDataListForleaderboardCollection.valueChanges({ idField: 'id' });
     this.absenDataListForleaderboard.subscribe(absenDataListForleaderboard => {
-      console.log("absenDataListForleaderboard", absenDataListForleaderboard);
-
       this.leaderboardDataList = [];
+      var index = 0;
       absenDataListForleaderboard.forEach((absenData: AbsenData) => {
+        index += 1;
         var karyawanData = this.globalService.karyawanDataList.filter((x: any) => { return x.idKaryawan === absenData.idKaryawan; }).find((x: any) => x != undefined);
         var leaderboardData: LeaderboardData = {
           idKaryawan: absenData.idKaryawan,
@@ -103,8 +103,7 @@ export class FirebaseService {
           ket: absenData.ket,
           lampiran: absenData.lampiran,
         };
-        this.leaderboardDataList.push(leaderboardData);
-        console.log("this.leaderboardDataList", this.leaderboardDataList);
+        if (index <= 4) this.leaderboardDataList.push(leaderboardData);
       });
     });
   }

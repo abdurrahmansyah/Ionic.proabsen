@@ -4,7 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { Workbook } from 'exceljs';
 import * as fs from 'file-saver';
 import { GlobalService } from './global.service';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Filesystem, Directory } from '@capacitor/filesystem';
 import write_blob from 'capacitor-blob-writer';
 
 @Injectable({
@@ -15,35 +15,70 @@ export class ExcelService {
   constructor(
     private loadingCtrl: LoadingController,
     private globalService: GlobalService,
-    // private datePipe: DatePipe
   ) { }
 
-  // CreateExcel() {
-  //   let workbook = new Workbook();
-  //   let worksheet = workbook.addWorksheet('Car Data');
+  async ExportReportAbsenToExcel(exportOptions: { fileName: string; worksheetname: string; title: string; header: string[]; data: any[][]; reportBy: string }) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      spinner: 'circles',
+    });
+    loading.present();
 
-  //   const title = 'Car Sell Report';
-  //   const header = ["Year", "Month", "Make", "Model", "Quantity", "Pct"]
-  //   const data = [
-  //     [2007, 1, "Volkswagen ", "Volkswagen Passat", 1267, 10],
-  //     [2007, 1, "Toyota ", "Toyota Rav4", 819, 6.5],
-  //     [2007, 1, "Toyota ", "Toyota Avensis", 787, 6.2],
-  //     [2007, 1, "Volkswagen ", "Volkswagen Golf", 720, 5.7],
-  //     [2007, 1, "Toyota ", "Toyota Corolla", 691, 5.4],
-  //   ];
+    const { fileName, worksheetname, title, header, data, reportBy } = exportOptions;
+    let workbook = new Workbook();
+    let worksheet = workbook.addWorksheet(worksheetname);
 
-  //   // Add new row
-  //   let titleRow = worksheet.addRow([title]);
-  //   // Set font, size and style in title row.
-  //   titleRow.font = { name: 'Comic Sans MS', family: 4, size: 16, underline: 'double', bold: true };
-  //   // Blank Row
-  //   worksheet.addRow([]);
-  //   //Add row with current date
-  //   let subTitleRow = worksheet.addRow(['Date : ' + this.datePipe.transform(new Date(), 'medium')]);
+    let titleRow = worksheet.addRow([title]);
+    titleRow.font = { bold: true };
+    titleRow.alignment = { horizontal: 'center' }
+    worksheet.mergeCells('A1:O1');
 
-  // }
+    worksheet.addRow([]);
+    worksheet.addRow(['Report By : ' + reportBy,]);
 
-  async exportListAsExcelJS(exportOptions: { fileName: string; worksheetname: string; title: string; header: string[]; data: any[][]; }) {
+    let headerRow = worksheet.addRow(header);
+    headerRow.eachCell((cell, number) => {
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '949494' }, };
+      cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' }, };
+    });
+
+    var idx = 0;
+    data.forEach((x) => {
+      idx += 1;
+      let row = worksheet.addRow(x);
+      row.eachCell((cell, number) => { cell.border = { top: { style: 'thin' }, bottom: { style: 'thin' } } })
+      row.getCell(1).border = { left: { style: 'thin' }, top: { style: 'thin' }, bottom: { style: 'thin' } };
+      row.getCell(15).border = { right: { style: 'thin' }, top: { style: 'thin' }, bottom: { style: 'thin' } };
+    });
+
+    workbook.xlsx.writeBuffer().then(async (data) => {
+      let blob = new Blob([data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
+      });
+
+      // (TDK BISA UTK MOBILE)
+      workbook.xlsx.writeBuffer().then((data) => {
+        let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', });
+        this.blobToSaveAs(fileName, blob);
+      });
+
+      write_blob({
+        path: fileName,
+        directory: Directory.External,
+        blob: blob
+      }).then((res) => {
+        this.globalService.PresentAlert("Berhasil menyimpan file pada: " + res);
+      }).catch((er) => {
+        this.globalService.PresentAlert("Download Gagal! " + JSON.stringify(er.message));
+      })
+      loading.dismiss();
+    }).catch(er => {
+      loading.dismiss();
+      this.globalService.PresentAlert("error Download: " + JSON.stringify(er));
+    });
+  }
+
+  async exportListAsExcelJSOLD(exportOptions: { fileName: string; worksheetname: string; title: string; header: string[]; data: any[][]; }) {
     const loading = await this.loadingCtrl.create({
       message: 'Loading...',
       spinner: 'circles',
@@ -107,14 +142,14 @@ export class ExcelService {
       };
     });
 
-    this.globalService.PresentAlert("data file excel: " + JSON.stringify(data));
+    // this.globalService.PresentAlert("data file excel: " + JSON.stringify(data));
 
     workbook.xlsx.writeBuffer().then(async (data) => {
       let blob = new Blob([data], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8',
       });
 
-      this.globalService.PresentAlert("data blob: " + JSON.stringify(blob));
+      // this.globalService.PresentAlert("data blob: " + JSON.stringify(blob));
 
       // (FAILED)
       // await Filesystem.writeFile({ 
@@ -128,21 +163,21 @@ export class ExcelService {
       // fs.saveAs(blob, 'CarData.xlsx');
 
       // (TDK BISA UTK MOBILE)
-      // workbook.xlsx.writeBuffer().then((data) => {
-      //   let blob = new Blob([data], {
-      //     type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-      //   });
-      //   this.blobToSaveAs(fileName, blob);
-      // });
+      workbook.xlsx.writeBuffer().then((data) => {
+        let blob = new Blob([data], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        this.blobToSaveAs(fileName, blob);
+      });
 
       write_blob({
-        path: 'Bismillah.xlsx',
-        directory: Directory.Documents,
+        path: fileName,
+        directory: Directory.External,
         blob: blob
       }).then((res) => {
-        this.globalService.PresentAlert("Alhamdulillah berhasil ges: " + res);
+        this.globalService.PresentAlert("Berhasil menyimpan file pada: " + res);
       }).catch((er) => {
-        this.globalService.PresentAlert("ERR saat write blob: " + JSON.stringify(er));
+        this.globalService.PresentAlert("Download Gagal! " + JSON.stringify(er.message));
       })
       loading.dismiss();
     }).catch(er => {

@@ -264,79 +264,9 @@
 
       <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
 
-      <!-- <div class="scrollYnew" scrollY="true">
-        <div *ngFor="let kategoriData of kategoriDataList">
-          <div *ngIf="kategoriData.jenisKategori == 'Pemasukan'">
-            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
-            <div style="padding: 0px 16px">
-              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
-                <ion-item lines="none" color="rid-white">
-                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
-                    <ion-col style="padding-left: 0px; display: block;">
-                      <div style="padding: 10px 0px;">
-                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
-                        <br>
-                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
-                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
-                      </div>
-                    </ion-col>
-                  </div>
-
-                  <div class="IconAdd">
-                    <ion-icon name="add" style="color: #E8FAED;"></ion-icon>
-                  </div>
-
-                </ion-item>
-
-                <ion-item-options side="end">
-                  <ion-item-option>Edit</ion-item-option>
-                  <ion-item-option color="danger">Hapus</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
-            </div>
-          </div>
-
-          <div *ngIf="kategoriData.jenisKategori == 'Pengeluaran'">
-            <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
-            <div style="padding: 0px 16px;">
-              <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
-                <ion-item lines="none" color="rid-white">
-                  <div style="width: 100%; background-color: white; margin-left: 16px; display: block;">
-                    <ion-col style="padding-left: 0px; display: block;">
-                      <div style="padding: 10px 0px;">
-                        <ion-text style="font-size: 20px; font-weight: 700;">{{kategoriData.namaKategori}}</ion-text>
-                        <br>
-                        <hr style="height: 10px; margin-top: 0px; margin-bottom: 0px;" no-padding>
-                        <ion-text>{{kategoriData.jenisKategori}}</ion-text>
-                      </div>
-                    </ion-col>
-                  </div>
-
-                  <div class="IconRemove">
-                    <ion-icon name="remove" style="color: #FDF1F2;"></ion-icon>
-                  </div>
-
-                </ion-item>
-
-                <ion-item-options side="end">
-                  <ion-item-option>Edit</ion-item-option>
-                  <ion-item-option color="danger">Hapus</ion-item-option>
-                </ion-item-options>
-              </ion-item-sliding>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- <div class="footerKategori">
-        <ion-row class="btnTambah ion-activatable ripple-parent">
-          <ion-col size="12" class="btnTambah2" style="background-color: var(--ion-color-rid-goodcream-two);">
-            <ion-ripple-effect style="border-radius: 5px;"></ion-ripple-effect>
-            <ion-text style="color: white;">Tambah Kategori</ion-text>
-          </ion-col>
-        </ion-row>
-      </div> -->
-
+      <div class="footerKategori ion-padding ion-text-center">
+        <img src="../../assets/images/img-9.png" style="width: 50%;">
+      </div>
     </div>
   </ion-content>
 
@@ -437,6 +367,9 @@
         </ion-row>
       </div> -->
 
+      <div class="footerKategori ion-padding ion-text-center">
+        <img src="../../assets/images/img-9.png" style="width: 50%;">
+      </div>
     </div>
   </ion-content>
 
@@ -564,14 +497,14 @@
           Absen</ion-text>
         <hr style="margin-bottom: 5px;">
         <ion-text style="font-size: 14px; color: var(--ion-color-rid-goodgreen-two);">Merupakan aplikasi
-          absensi</ion-text>
+          yang dapat digunakan untuk melakukan absensi maupun ijin ketidakhadiran karyawan</ion-text>
       </div>
       <br>
 
-      <div class="ion-padding">
+      <!-- <div class="ion-padding">
         <ion-button shape="round" color="rid-goodgreen-three" (click)="HapusSemuaDataAbsen()">Hapus Semua Data
           Absen</ion-button>
-      </div>
+      </div> -->
     </div>
   </ion-content>
 </div>
@@ -633,12 +566,18 @@
 
         <div class="scrollYnew">
           <div style="padding: 0px 16px;">
-            <div class="dash1" button (click)="exportExcelExcelJS()">
+            <div class="dash1 ion-activatable" button (click)="DownloadDataKaryawan()">
+              <ion-ripple-effect style="border-radius: 10px;"></ion-ripple-effect>
               <ion-row class="ion-no-padding ion-no-margin">
                 <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
-                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <div *ngFor="let karyawanData of firebaseService.karyawanDataList | async; let i=index">
+                    <img *ngIf="i==0" src="{{karyawanData.photoURL}}" class="one" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                    <img *ngIf="i==1" src="{{karyawanData.photoURL}}" class="two" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                    <img *ngIf="i==2" src="{{karyawanData.photoURL}}" class="three" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                  </div>
                 </ion-col>
                 <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
                   <div class="icon">
@@ -650,40 +589,49 @@
                 </ion-col>
               </ion-row>
               <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan {{karyawanTotal}} Orang </ion-text>
               <br>
               <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
               <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
               <ion-row class="ion-no-padding">
                 <ion-col size="7" class="ion-no-padding">
-                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                  <ion-text style="font-size: 14px; line-height: 14px;">{{karyawanTotal}} dari 200</ion-text>
                 </ion-col>
                 <ion-col size="5" class="ion-no-padding ion-text-end">
-                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                  <ion-text style="font-size: 14px; line-height: 14px;">{{persenKaryawanTotal}}</ion-text>
                 </ion-col>
               </ion-row>
               <div style="position: relative; height: 12px;">
-                <div class="persenKaryawanTotal"></div>
-                <div class="persenKaryawanExisting" style="width: 67%;"></div>
-                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
+                <div class="persenKaryawanExisting"></div>
+                <!-- <div class="persenKaryawanTotal" style="width: 67%;"></div> -->
+                <div class="persenKaryawanTotal" [style.width]="persenKaryawanTotal"></div>
               </div>
               <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
               <div>
-                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
+                <ion-text style="font-size: 14px; line-height: 14px;">Sisa {{karyawanTotalSisa}} dari batas
+                  kuota</ion-text>
               </div>
             </div>
             <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
 
-            <ion-button (click)="exportExcelExcelJS()" expand="block">Download File</ion-button>
+            <!-- <ion-button (click)="DownloadReportAbsen()" expand="block">Download File</ion-button>
             <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+            <ion-button (click)="GetLocation()" expand="block">Cek Lokasi</ion-button>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding"> -->
             <!-- // -->
 
-            <div class="dash1">
+            <div class="dash1 ion-activatable" button (click)="DownloadReportAbsen()">
+              <ion-ripple-effect style="border-radius: 10px;"></ion-ripple-effect>
               <ion-row class="ion-no-padding ion-no-margin">
                 <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
-                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                  <div *ngFor="let karyawanData of firebaseService.karyawanDataList | async; let i=index">
+                    <img *ngIf="i==3" src="{{karyawanData.photoURL}}" class="one" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                    <img *ngIf="i==4" src="{{karyawanData.photoURL}}" class="two" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                    <img *ngIf="i==5" src="{{karyawanData.photoURL}}" class="three" style="border-radius: 25px;"
+                      referrerpolicy="no-referrer" />
+                  </div>
                 </ion-col>
                 <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
                   <div class="icon">
@@ -695,116 +643,147 @@
                 </ion-col>
               </ion-row>
               <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
+              <ion-text style="font-size: 20px; font-weight: 700;">Total Absensi {{absenTotal}} Kali</ion-text>
               <br>
-              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <ion-text style="font-size: 14px; line-height: 14px;">dari {{bulanTotal}} Bulan</ion-text>
               <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-row class="ion-no-padding">
-                <ion-col size="7" class="ion-no-padding">
-                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+              <div class="kehadiran">
+                <!-- <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+                <div class="map ion-text-center">
+                  <ion-col class="ion-text-center ion-align-self-center">
+                    <ion-text style="font-size: 36px; font-weight: 700; padding: 12px">{{hadirTotal}}</ion-text> <br>
+                    <ion-text>Hadir</ion-text>
+                  </ion-col>
+                </div>
+                <span style="margin: 8px;"></span>
+                <div class="map ion-text-center">
+                  <ion-col class="ion-text-center ion-align-self-center">
+                    <ion-text style="font-size: 36px; font-weight: 700; padding: 12px">{{ijinTotal}}</ion-text> <br>
+                    <ion-text>Ijin</ion-text>
+                  </ion-col>
+                </div>
+                <span style="margin: 8px;"></span>
+                <div class="map ion-text-center">
+                  <ion-col class="ion-text-center ion-align-self-center">
+                    <ion-text style="font-size: 36px; font-weight: 700; padding: 12px">{{sakitTotal}}</ion-text> <br>
+                    <ion-text>Sakit</ion-text>
+                  </ion-col>
+                </div>
+                <span style="margin: 8px;"></span>
+                <div class="map ion-text-center">
+                  <ion-col class="ion-text-center ion-align-self-center">
+                    <ion-text
+                      style="font-size: 36px; font-weight: 700; padding: 12px">{{dinasDalamKotaTotal}}</ion-text> <br>
+                    <ion-text>Dinas Dalam Kota</ion-text>
+                  </ion-col>
+                </div>
+                <span style="margin: 8px;"></span>
+                <div class="map ion-text-center">
+                  <ion-col class="ion-text-center ion-align-self-center">
+                    <ion-text style="font-size: 36px; font-weight: 700; padding: 12px">{{dinasLuarKotaTotal}}</ion-text>
+                    <br>
+                    <ion-text>Dinas Luar Kota</ion-text>
+                  </ion-col>
+                </div>
+              </div>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <div class="likeCard ion-text-center ion-activatable" button (click)="DeleteAllAbsenData()">
+              <ion-ripple-effect style="height: 10vh; border-radius: 20px;"></ion-ripple-effect>
+              <ion-col class="ion-text-center ion-align-self-center">
+                <div style="padding-top: 2vh;">
+                  <ion-text>Hapus Seluruh Data Absen</ion-text>
+                </div>
+              </ion-col>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <div class="likeCard ion-text-center ion-activatable" button (click)="DownloadReportAbsen()">
+              <ion-ripple-effect style="height: 10vh; border-radius: 20px;"></ion-ripple-effect>
+              <ion-col class="ion-text-center ion-align-self-center">
+                <div style="padding-top: 2vh;">
+                  <ion-text>Download Report Absen</ion-text>
+                </div>
+              </ion-col>
+            </div>
+            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
+
+            <div class="dash1" button (click)="DownloadReportAbsen()">
+              <ion-row class="ion-no-padding ion-no-margin">
+                <ion-col size="10" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 40%; height: 40px; border-radius: 5px;"></ion-skeleton-text>
                 </ion-col>
-                <ion-col size="5" class="ion-no-padding ion-text-end">
-                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                <ion-col size="2" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="skeleton">
+                    <ion-skeleton-text [animated]="true"
+                      style="width: 100%; height: 26px; border-radius: 5px;"></ion-skeleton-text>
+                  </div>
                 </ion-col>
               </ion-row>
-              <div style="position: relative; height: 12px;">
-                <div class="persenKaryawanTotal"></div>
-                <div class="persenKaryawanExisting" style="width: 67%;"></div>
-                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
-              </div>
-              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
-              <div>
-                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
-              </div>
+              <ion-skeleton-text [animated]="true"
+                style="width: 70%; height: 20px; border-radius: 5px;"></ion-skeleton-text>
+              <ion-skeleton-text [animated]="true"
+                style="width: 50%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
+
+              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
+              <ion-row class="ion-no-padding">
+                <ion-col size="11" class="ion-no-padding">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 30%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
+                </ion-col>
+                <ion-col size="1" class="ion-no-padding ion-text-end">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 100%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
+                </ion-col>
+              </ion-row>
+              <ion-skeleton-text [animated]="true"
+                style="width: 100%; height: 12px; border-radius: 5px; "></ion-skeleton-text>
+              <hr style="height: 5px;" class="ion-no-margin ion-no-padding">
+              <ion-skeleton-text [animated]="true"
+                style="width: 45%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
             </div>
             <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
 
             <!-- // -->
 
-            <div class="dash1">
+            <div class="dash1" button (click)="DownloadReportAbsen()">
               <ion-row class="ion-no-padding ion-no-margin">
-                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
-                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
+                <ion-col size="10" class="ion-no-padding ion-no-margin profilImageKaryawan">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 40%; height: 40px; border-radius: 5px;"></ion-skeleton-text>
                 </ion-col>
-                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
-                  <div class="icon">
-                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
-                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
+                <ion-col size="2" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
+                  <div class="skeleton">
+                    <ion-skeleton-text [animated]="true"
+                      style="width: 100%; height: 26px; border-radius: 5px;"></ion-skeleton-text>
                   </div>
                 </ion-col>
               </ion-row>
-              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
-              <br>
-              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
+              <ion-skeleton-text [animated]="true"
+                style="width: 70%; height: 20px; border-radius: 5px;"></ion-skeleton-text>
+              <ion-skeleton-text [animated]="true"
+                style="width: 50%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
+
               <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
               <ion-row class="ion-no-padding">
-                <ion-col size="7" class="ion-no-padding">
-                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
+                <ion-col size="11" class="ion-no-padding">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 30%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
                 </ion-col>
-                <ion-col size="5" class="ion-no-padding ion-text-end">
-                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
+                <ion-col size="1" class="ion-no-padding ion-text-end">
+                  <ion-skeleton-text [animated]="true"
+                    style="width: 100%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
                 </ion-col>
               </ion-row>
-              <div style="position: relative; height: 12px;">
-                <div class="persenKaryawanTotal"></div>
-                <div class="persenKaryawanExisting" style="width: 67%;"></div>
-                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
-              </div>
-              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
-              <div>
-                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
-              </div>
+              <ion-skeleton-text [animated]="true"
+                style="width: 100%; height: 12px; border-radius: 5px; "></ion-skeleton-text>
+              <hr style="height: 5px;" class="ion-no-margin ion-no-padding">
+              <ion-skeleton-text [animated]="true"
+                style="width: 45%; height: 14px; border-radius: 5px; line-height: 14px;"></ion-skeleton-text>
             </div>
             <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
-
-            <!-- // -->
-
-            <div class="dash1">
-              <ion-row class="ion-no-padding ion-no-margin">
-                <ion-col size="8" class="ion-no-padding ion-no-margin profilImageKaryawan">
-                  <img src="{{photoURL}}" class="one" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="two" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                  <img src="{{photoURL}}" class="three" style="border-radius: 25px;" referrerpolicy="no-referrer" />
-                </ion-col>
-                <ion-col size="4" class="ion-no-padding ion-no-margin ion-text-end" style="align-self: center;">
-                  <div class="icon">
-                    <!-- <ion-icon name="person" style="color: black;"></ion-icon> -->
-                    <ion-icon name="ellipsis-horizontal" style="font-size: 24px;"></ion-icon>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <ion-icon name="cloud-download-outline" style="font-size: 24px;"></ion-icon>
-                  </div>
-                </ion-col>
-              </ion-row>
-              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-text style="font-size: 20px; font-weight: 700;">Total Karyawan 73 Orang</ion-text>
-              <br>
-              <ion-text style="font-size: 14px; line-height: 14px;">Status aktif</ion-text>
-              <hr style="height: 20px;" class="ion-no-margin ion-no-padding">
-              <ion-row class="ion-no-padding">
-                <ion-col size="7" class="ion-no-padding">
-                  <ion-text style="font-size: 14px; line-height: 14px;">73 dari 250</ion-text>
-                </ion-col>
-                <ion-col size="5" class="ion-no-padding ion-text-end">
-                  <ion-text style="font-size: 14px; line-height: 14px;">67%</ion-text>
-                </ion-col>
-              </ion-row>
-              <div style="position: relative; height: 12px;">
-                <div class="persenKaryawanTotal"></div>
-                <div class="persenKaryawanExisting" style="width: 67%;"></div>
-                <!-- <div class="persenKaryawanExisting" [style.width]="performancePersen"></div> -->
-              </div>
-              <hr style="height: 10px;" class="ion-no-margin ion-no-padding">
-              <div>
-                <ion-text style="font-size: 14px; line-height: 14px;">Sisa 134 dari batas total</ion-text>
-              </div>
-            </div>
-            <hr style="height: 14px;" class="ion-no-margin ion-no-padding">
-
 
           </div>
           <hr style="height: 82px; margin-top: 0px; margin-bottom: 0px;" no-padding>
@@ -832,7 +811,7 @@
       <div *ngIf="segment === 'karyawan'" class="flexContainer">
         <div class="scrollYnew">
 
-          <div *ngFor="let karyawanData of karyawanDataList | async">
+          <div *ngFor="let karyawanData of firebaseService.karyawanDataList | async">
             <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
             <div style="padding: 0px 16px;">
               <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
@@ -892,7 +871,7 @@
       <div *ngIf="segment === 'jam_kerja'" class="flexContainer">
         <div class="scrollYnew">
 
-          <div *ngFor="let jamKerjaData of jamKerjaDataList | async">
+          <div *ngFor="let jamKerjaData of firebaseService.jamKerjaDataList | async">
             <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
             <div style="padding: 0px 16px;">
               <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
@@ -952,7 +931,7 @@
       <div *ngIf="segment === 'bagian'" class="flexContainer">
         <div class="scrollYnew">
 
-          <div *ngFor="let bagianData of bagianDataList | async">
+          <div *ngFor="let bagianData of firebaseService.bagianDataList | async">
             <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
             <div style="padding: 0px 16px;">
               <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
@@ -1010,7 +989,7 @@
       <div *ngIf="segment === 'jabatan'" class="flexContainer">
         <div class="scrollYnew">
 
-          <div *ngFor="let jabatanData of jabatanDataList | async">
+          <div *ngFor="let jabatanData of firebaseService.jabatanDataList | async">
             <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
             <div style="padding: 0px 16px;">
               <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">
@@ -1068,7 +1047,7 @@
       <div *ngIf="segment === 'kantor'" class="flexContainer">
         <div class="scrollYnew">
 
-          <div *ngFor="let kantorData of kantorDataList | async">
+          <div *ngFor="let kantorData of firebaseService.kantorDataList | async">
             <hr style="height: 14px; margin-top: 0px; margin-bottom: 0px;" no-padding>
             <div style="padding: 0px 16px;">
               <ion-item-sliding class="ion-no-padding ion-no-margin" style="border-radius: 10px;">

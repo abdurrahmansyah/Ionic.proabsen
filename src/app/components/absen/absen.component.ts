@@ -50,10 +50,10 @@ export class AbsenComponent implements OnInit {
     } else {
       var date = new Date();
       var year = date.getFullYear();
-      var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+      var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
       var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
       var tanggal = year + '-' + month + '-' + day;
-      // tanggal = "2023-02-04";
+      // tanggal = "2023-03-16";
       var tanggal2 = year.toString() + month.toString() + day.toString();
       var bulan = month.toString() + '/' + year.toString();
       var timeAbsen = formatDate(date, 'HH:mm', 'en-US');
